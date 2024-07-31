@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcApplicationRUTH.Models.Employee>
+@{
+    ViewBag.Title = "AllEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hgroup class="title">
+    <h2>@Html.ActionLink("Add new Employee", "AddEmployee", "Home")</h2>
+</hgroup>
+<table id="example1" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Employee Names</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.employeeNoID)
+            </td>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.employeeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EmployeeEdit", new { id = item.employeeNoID }) |
+                @Html.ActionLink("Delete", "EmployeeDelete", new { id = item.employeeNoID })
+            </td>
+        </tr>
+    }
+</table>
+
