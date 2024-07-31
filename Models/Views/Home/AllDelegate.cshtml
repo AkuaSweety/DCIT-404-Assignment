@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcApplicationRUTH.Models.Delegates>
+@{
+    ViewBag.Title = "AllDelegate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@Html.ActionLink("Add new Delegates", "AddDelegates", "Home")</h2>
+</hgroup>
+<table id="example1" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Delegates Names</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.delegateNoID)
+            </td>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.delegateLName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "DelegateEdit", new { id = item.delegateNoID }) |
+                @Html.ActionLink("Delete", "DelegateDelete", new { id = item.delegateNoID })
+            </td>
+        </tr>
+    }
+</table>
+
+
+

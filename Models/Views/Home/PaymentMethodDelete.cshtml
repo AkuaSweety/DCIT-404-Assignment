@@ -1,0 +1,35 @@
+﻿@model MvcApplicationRUTH.Models.PaymentMethod
+@{
+    ViewBag.Title = "PaymentMethodDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Payment Method Delete</h2>
+<section class="content">
+    <div class="panel panel-body">
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dd style="text-transform: uppercase;">
+                    @Html.DisplayFor(model => model.pMethodNoID)
+                </dd>
+
+                <dd style="text-transform: uppercase;">
+                    @Html.DisplayFor(model => model.methodName)
+                </dd>
+            </dl>
+            <br /><br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-md-offset-5 col-md-3">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink(" Back", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-primary" })
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

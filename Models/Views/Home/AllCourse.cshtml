@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcApplicationRUTH.Models.Course>
+@{
+    ViewBag.Title = "AllCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@Html.ActionLink("Add new Course", "AddCourse", "Home")</h2>
+</hgroup>
+<table id="example1" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Course Names</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.courseNoID)
+            </td>
+            <td style="text-transform: uppercase;">
+                @Html.DisplayFor(modelItem => item.courseName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "CourseEdit", new { id = item.courseNoID }) |
+                @Html.ActionLink("Delete", "CourseDelete", new { id = item.courseNoID })
+            </td>
+        </tr>
+    }
+</table>
+
+
+
